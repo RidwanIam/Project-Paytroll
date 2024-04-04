@@ -4,13 +4,19 @@
  * and open the template in the editor.
  */
 
-package program_paytroll_karyawan;
+package program_paytroll_karyawan.View;
+
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+import program_paytroll_karyawan.Controller.LoginController;
+import program_paytroll_karyawan.Model.LoginModel;
 
 /**
  *
  * @author mymau
  */
 public class Form_Login extends javax.swing.JFrame {
+    private LoginController loginController = new LoginController();
 
     /** Creates new form Form_Login */
     public Form_Login() {
@@ -30,9 +36,9 @@ public class Form_Login extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        usernameField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JPasswordField();
+        loginBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -51,13 +57,42 @@ public class Form_Login extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("Password");
 
-        jPasswordField1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        usernameField.setText("Username");
+        usernameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                usernameFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                usernameFieldFocusLost(evt);
+            }
+        });
 
-        jButton1.setBackground(new java.awt.Color(0, 255, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(204, 204, 204));
-        jButton1.setText("LOGIN");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        passwordField.setText("Password");
+        passwordField.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passwordFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                passwordFieldFocusLost(evt);
+            }
+        });
+        passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordFieldKeyPressed(evt);
+            }
+        });
+
+        loginBtn.setBackground(new java.awt.Color(0, 255, 255));
+        loginBtn.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
+        loginBtn.setForeground(new java.awt.Color(204, 204, 204));
+        loginBtn.setText("LOGIN");
+        loginBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBtnActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("GAMBAR DISINI");
 
@@ -73,9 +108,9 @@ public class Form_Login extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
                             .addComponent(jLabel5)))
@@ -99,13 +134,13 @@ public class Form_Login extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addComponent(jLabel1)
                         .addGap(3, 3, 3)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addGap(3, 3, 3)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 77, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -124,6 +159,71 @@ public class Form_Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        // TODO add your handling code here:
+        this.login();
+    }//GEN-LAST:event_loginBtnActionPerformed
+
+    private void usernameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFieldFocusGained
+        // TODO add your handling code here:
+        String username = usernameField.getText();
+        
+        if(username.equals("Username")){
+            usernameField.setText("");
+        }
+    }//GEN-LAST:event_usernameFieldFocusGained
+
+    private void usernameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFieldFocusLost
+        // TODO add your handling code here:
+         String username = usernameField.getText();
+        
+        if(username.equals("")){
+            usernameField.setText("Username");
+        }
+    }//GEN-LAST:event_usernameFieldFocusLost
+
+    private void passwordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusGained
+        // TODO add your handling code here:
+        String password = passwordField.getText();
+        
+        if(password.equals("Password")){
+            passwordField.setText("");
+        }
+    }//GEN-LAST:event_passwordFieldFocusGained
+
+    private void passwordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusLost
+        // TODO add your handling code here:
+        String password = passwordField.getText();
+        
+        if(password.equals("")){
+            passwordField.setText("Password");
+        }
+    }//GEN-LAST:event_passwordFieldFocusLost
+
+    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+           this.login(); 
+        }
+    }//GEN-LAST:event_passwordFieldKeyPressed
+                                      
+    
+    private void login(){
+        LoginModel model = new LoginModel();
+
+        model.setUsername(usernameField.getText());
+        model.setPassword(passwordField.getText());
+        
+        String validate = loginController.authUser(model);
+        if(validate.equals("Success")){
+            new MainMenu_Utama().setVisible(true);
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(null,"Login Success");
+        }else{
+            JOptionPane.showMessageDialog(null,"Login Gagal");
+        }
+        System.out.println(validate);
+    }
     /**
      * @param args the command line arguments
      */
@@ -160,15 +260,15 @@ public class Form_Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton loginBtn;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
 
 }
