@@ -7,20 +7,31 @@
 package program_paytroll_karyawan.View;
 
 import java.awt.event.KeyEvent;
-import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import program_paytroll_karyawan.Controller.LoginController;
-import program_paytroll_karyawan.Model.LoginModel;
 
 /**
  *
  * @author mymau
  */
 public class Form_Login extends javax.swing.JFrame {
-    private LoginController loginController = new LoginController();
-
+    private LoginController loginController;
+    
     /** Creates new form Form_Login */
     public Form_Login() {
         initComponents();
+        setLocationRelativeTo(this);
+        
+        loginController = new LoginController(this);
+    }
+    
+    public JTextField getUsername(){
+        return usernameField;
+    }
+    
+    public JPasswordField getPassword(){
+        return passwordField;
     }
 
     /** This method is called from within the constructor to
@@ -43,6 +54,7 @@ public class Form_Login extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -50,14 +62,13 @@ public class Form_Login extends javax.swing.JFrame {
         jLabel4.setText("PT UNIKO");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("Username");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("Password");
 
         usernameField.setText("Username");
+        usernameField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         usernameField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 usernameFieldFocusGained(evt);
@@ -68,6 +79,7 @@ public class Form_Login extends javax.swing.JFrame {
         });
 
         passwordField.setText("Password");
+        passwordField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         passwordField.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -85,7 +97,6 @@ public class Form_Login extends javax.swing.JFrame {
 
         loginBtn.setBackground(new java.awt.Color(0, 255, 255));
         loginBtn.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
-        loginBtn.setForeground(new java.awt.Color(204, 204, 204));
         loginBtn.setText("LOGIN");
         loginBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +105,7 @@ public class Form_Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("GAMBAR DISINI");
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Images/logo_login.png"))); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setText("Welcome");
@@ -117,16 +128,16 @@ public class Form_Login extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(144, 144, 144)
                         .addComponent(jLabel4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(21, 21, 21))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(32, 32, 32)
@@ -140,28 +151,18 @@ public class Form_Login extends javax.swing.JFrame {
                         .addGap(3, 3, 3)
                         .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 77, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel2);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
-        this.login();
+        loginController.authUser();
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void usernameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFieldFocusGained
@@ -203,27 +204,11 @@ public class Form_Login extends javax.swing.JFrame {
     private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-           this.login(); 
+           loginController.authUser();
         }
     }//GEN-LAST:event_passwordFieldKeyPressed
                                       
     
-    private void login(){
-        LoginModel model = new LoginModel();
-
-        model.setUsername(usernameField.getText());
-        model.setPassword(passwordField.getText());
-        
-        String validate = loginController.authUser(model);
-        if(validate.equals("Success")){
-            new MainMenu_Utama().setVisible(true);
-            this.setVisible(false);
-            JOptionPane.showMessageDialog(null,"Login Success");
-        }else{
-            JOptionPane.showMessageDialog(null,"Login Gagal");
-        }
-        System.out.println(validate);
-    }
     /**
      * @param args the command line arguments
      */

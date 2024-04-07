@@ -5,6 +5,8 @@
  */
 package program_paytroll_karyawan;
 
+import program_paytroll_karyawan.View.Form_Login;
+
 /**
  *
  * @author mymau
@@ -16,6 +18,7 @@ public class Program_Paytroll_karyawan {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        new Form_Login().setVisible(true);
     }
     
 }

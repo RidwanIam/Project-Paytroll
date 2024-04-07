@@ -11,32 +11,36 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import program_paytroll_karyawan.Dao.ImplementLogin;
+import program_paytroll_karyawan.Dao.LoginDAO;
+import program_paytroll_karyawan.View.Form_Login;
+import program_paytroll_karyawan.View.MainMenu_Utama;
 
 /**
  *
  * @author lincbp
  */
 public class LoginController {
-    public String authUser(LoginModel loginModel){
-        String res = "Failed";
-        
-        String username = loginModel.getUsername();
-        String password = loginModel.getPassword();
-        
-        Connection conn = DbConnection.getConnection();;
-        Statement st = null;
-        ResultSet rs = null;
-        
-        try{
-            st = conn.createStatement();
-            rs = st.executeQuery("SELECT * FROM employe WHERE username='"+username+"' AND password='"+password+"'");
-            if(rs.next()){
-                res = "Success";
-            }
-            conn.close();
-        }catch(Exception e){
-            System.out.println(e.getMessage());
+    private final Form_Login panel;
+    private final ImplementLogin implementLogin;
+    
+    public LoginController(Form_Login panel) {
+        this.panel = panel;
+        implementLogin = new LoginDAO();
+    }
+    
+    public void authUser(){
+        LoginModel loginModel = new LoginModel();
+        loginModel.setUsername(panel.getUsername().getText());
+        loginModel.setPassword(panel.getPassword().getText());
+        String Response = implementLogin.authUser(loginModel);
+        if(Response.equals("Success")){
+            new MainMenu_Utama(loginModel).setVisible(true);
+            panel.setVisible(false);
+            JOptionPane.showMessageDialog(null,"Login Success");
+        }else{
+            JOptionPane.showMessageDialog(null,"Login Gagal");
         }
-        return res;
     }
 }

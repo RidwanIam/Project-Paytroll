@@ -13,6 +13,18 @@ import java.util.Date;
  */
 public class LoginModel {
 
+    private int employe_id;
+    private String employe_name;
+    private Date date_of_birth;
+    private String nik;
+    private String username;
+    private String password;
+    private String role;
+    private Double salary;
+    private int is_active;
+    private String created_by;
+    private Date created_at;
+    
     public int getEmploye_id() {
         return employe_id;
     }
@@ -84,17 +96,6 @@ public class LoginModel {
     public void setCreated_at(Date created_at) {
         this.created_at = created_at;
     }
-    private int employe_id;
-    private String employe_name;
-    private Date date_of_birth;
-    private String nik;
-    private String username;
-    private String password;
-    private String role;
-    private Double salary;
-    private int is_active;
-    private String created_by;
-    private Date created_at;
 
     public String getUsername() {
         return username;
