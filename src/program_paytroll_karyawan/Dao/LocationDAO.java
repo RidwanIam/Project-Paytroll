@@ -155,5 +155,34 @@ public class LocationDAO implements ImplementLocation{
             return null;
         }
     }
+
+    @Override
+    public LocationModel getLocationDetail(int id) {
+        
+        try {
+            
+            Statement statement = DbConnection.getConnection().createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM location WHERE location_id='"+id+"' limit 1");
+            LocationModel location = new LocationModel();
+            while (result.next()) { 
+                location.setLocation_id(result.getInt("location_id"));
+                location.setName(result.getString("name"));
+                location.setAddress_1(result.getString("address_1"));
+                location.setAddress_2(result.getString("address_2"));
+                location.setCity(result.getString("city"));
+                location.setDistrict(result.getString("district"));
+                location.setSub_district(result.getString("sub_district"));
+                location.setZip_code(result.getString("zip_code"));
+                location.setProvince(result.getString("province"));
+            }
+            
+            statement.close();
+            result.close();
+            return location;
+        } catch (SQLException ex) {
+            Logger.getLogger(LocationDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
     
 }

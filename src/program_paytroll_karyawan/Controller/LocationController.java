@@ -144,7 +144,7 @@ import program_paytroll_karyawan.Table.ButtonColumn;
     
     public void getData(){
         if (panel.getSearchTxt().getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(panel, "Isi keyword yang mau di cari....? ", null, JOptionPane.WARNING_MESSAGE);
+            this.isiTable();
             return;
         }
         String nama = panel.getSearchTxt().getText();
@@ -156,9 +156,5 @@ import program_paytroll_karyawan.Table.ButtonColumn;
         ButtonColumn buttonColumn2 = new ButtonColumn(panel.getTabelLocation(), null, 9);
         buttonColumn1.setMnemonic(KeyEvent.VK_D);
         buttonColumn2.setMnemonic(KeyEvent.VK_E);
-    }
-    
-    public void isiTableSearch(){
-        
     }
 }

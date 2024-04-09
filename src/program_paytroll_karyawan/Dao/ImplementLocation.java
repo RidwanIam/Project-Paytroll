@@ -22,5 +22,6 @@ public interface ImplementLocation {
     public List<LocationModel> getLocation(String nama);
     
     public List<LocationModel> getAllLocation();
-
+    
+    public LocationModel getLocationDetail(int id);
 }
