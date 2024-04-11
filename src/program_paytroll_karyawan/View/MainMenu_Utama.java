@@ -780,6 +780,10 @@ public class MainMenu_Utama extends javax.swing.JFrame {
 
     private void navLocation2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navLocation2ActionPerformed
         // TODO add your handling code here:
+        pn_utama.removeAll();
+        pn_utama.add(new DivisionForm(loginModel));
+        pn_utama.repaint();
+        pn_utama.revalidate();
     }//GEN-LAST:event_navLocation2ActionPerformed
 
     /**
