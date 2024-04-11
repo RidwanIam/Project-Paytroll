@@ -75,7 +75,16 @@ public class DepartementController {
         model.setName(panel.getNameTxt().getText());
         model.setNotes(panel.getNotesTxt().getText());
         model.setLocation_id(location_id);
-        dao.input(model);
+        String res = this.validate(model);
+        if(res.equals("Success")){
+            dao.input(model);
+            JOptionPane.showMessageDialog(null,"Data Berhasil Ditambah");
+            this.reset();
+            this.isiTable();
+            panel.moveToTable();
+        }else{
+            JOptionPane.showMessageDialog(null,res);
+        }
         
     }
     
@@ -87,7 +96,16 @@ public class DepartementController {
         model.setNotes(panel.getNotesTxt().getText());
         model.setLocation_id(location_id);
         model.setDepartement_id(Integer.valueOf(panel.getIdTxt().getText()));
-        dao.update(model);
+        String res = this.validate(model);
+        if(res.equals("Success")){
+            dao.update(model);
+            JOptionPane.showMessageDialog(null,"Data Berhasil DiUbah");
+            this.reset();
+            this.isiTable();
+            panel.moveToTable();
+        }else{
+            JOptionPane.showMessageDialog(null,res);
+        }
     }
      
     public void getData(){
@@ -145,6 +163,32 @@ public class DepartementController {
             dao.delete(id);
             JOptionPane.showMessageDialog(null,"Data Berhasil Dihapus");
             this.isiTable();
+        }
+    }
+    
+     public String validate(DepartementModel model){
+        String res = "Success";
+        if(this.isNullOrEmpty(model.getName())){
+            return this.validateMessage(1, "Nama");
+        }
+        if(this.isNullOrEmpty(model.getNotes())){
+            return this.validateMessage(1, "Notes");
+        }
+        return res;
+    }
+     public String validateMessage(int seq,String text){
+        if(seq == 1){
+            return "Field "+text+" Wajib Diisi";
+        }else{
+            return text;
+        }
+    }
+    
+    public boolean isNullOrEmpty(String text){
+        if(text.equals("") || text == null){
+            return true;
+        }else{
+            return false;
         }
     }
 }

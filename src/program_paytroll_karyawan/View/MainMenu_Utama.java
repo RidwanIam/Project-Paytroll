@@ -84,6 +84,7 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         navHome = new javax.swing.JButton();
         navDepartement = new javax.swing.JButton();
         navLocation2 = new javax.swing.JButton();
+        navLocation3 = new javax.swing.JButton();
         pn_kanan = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         pn_dasar = new javax.swing.JPanel();
@@ -624,6 +625,17 @@ public class MainMenu_Utama extends javax.swing.JFrame {
             }
         });
 
+        navLocation3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/People_1.png"))); // NOI18N
+        navLocation3.setText("Karyawan");
+        navLocation3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        navLocation3.setMinimumSize(new java.awt.Dimension(189, 59));
+        navLocation3.setPreferredSize(new java.awt.Dimension(189, 59));
+        navLocation3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                navLocation3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pn_kiriLayout = new javax.swing.GroupLayout(pn_kiri);
         pn_kiri.setLayout(pn_kiriLayout);
         pn_kiriLayout.setHorizontalGroup(
@@ -660,7 +672,8 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                                 .addComponent(navHome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                                 .addComponent(navLocation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(navDepartement, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(navLocation2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(navLocation2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(navLocation3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         pn_kiriLayout.setVerticalGroup(
@@ -680,6 +693,8 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                 .addComponent(navDepartement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(navLocation2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(navLocation3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pn_DataPegawai, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -786,6 +801,10 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         pn_utama.revalidate();
     }//GEN-LAST:event_navLocation2ActionPerformed
 
+    private void navLocation3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navLocation3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_navLocation3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -865,6 +884,7 @@ public class MainMenu_Utama extends javax.swing.JFrame {
     private javax.swing.JButton navHome;
     private javax.swing.JButton navLocation;
     private javax.swing.JButton navLocation2;
+    private javax.swing.JButton navLocation3;
     private javax.swing.JPanel pn_Absensi;
     private javax.swing.JPanel pn_AbsensiPegawai;
     private javax.swing.JPanel pn_Account;

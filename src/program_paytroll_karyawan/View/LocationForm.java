@@ -418,19 +418,12 @@ public class LocationForm extends javax.swing.JPanel {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
         controller.insert();
-        controller.isiTable();
-        controller.reset();
         
-        this.moveToTable();
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         // TODO add your handling code here:
         controller.edit();
-        controller.isiTable();
-        controller.reset();
-        
-        this.moveToTable();
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void locationTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_locationTableMouseClicked

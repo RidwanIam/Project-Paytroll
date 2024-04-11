@@ -71,10 +71,17 @@ import program_paytroll_karyawan.Table.ButtonColumn;
         model.setDistrict(panel.getDistrictTxt().getText());
         model.setSub_district(panel.getSubDistrictTxt().getText());
         model.setZip_code(panel.getZipCodeTxt().getText());
+        String res = this.validate(model);
+        if(res.equals("Success")){
+            implementLocation.input(model);
+            JOptionPane.showMessageDialog(null,"Data Berhasil Ditambah");
+            this.reset();
+            this.isiTable();
+            panel.moveToTable();
+        }else{
+            JOptionPane.showMessageDialog(null,res);
+        }
         
-        implementLocation.input(model);
-        
-        JOptionPane.showMessageDialog(null,"Data Berhasil Ditambah");
         
     }
     
@@ -137,9 +144,16 @@ import program_paytroll_karyawan.Table.ButtonColumn;
         model.setZip_code(panel.getZipCodeTxt().getText());
         model.setLocation_id(Integer.valueOf(panel.getLocationIdTxt().getText()));
         
-        implementLocation.update(model);
-        
-        JOptionPane.showMessageDialog(null,"Data Berhasil Diubah");
+        String res = this.validate(model);
+        if(res.equals("Success")){
+            implementLocation.update(model);
+            JOptionPane.showMessageDialog(null,"Data Berhasil Diubah");
+            this.reset();
+            this.isiTable();
+            panel.moveToTable();
+        }else{
+            JOptionPane.showMessageDialog(null,res);
+        }
     }
     
     public void getData(){
@@ -156,5 +170,52 @@ import program_paytroll_karyawan.Table.ButtonColumn;
         ButtonColumn buttonColumn2 = new ButtonColumn(panel.getTabelLocation(), null, 9);
         buttonColumn1.setMnemonic(KeyEvent.VK_D);
         buttonColumn2.setMnemonic(KeyEvent.VK_E);
+    }
+    public String validate(LocationModel model){
+        String res = "Success";
+        if(this.isNullOrEmpty(model.getName())){
+            return this.validateMessage(1, "Nama");
+        }
+        
+        if(this.isNullOrEmpty(model.getProvince())){
+            return this.validateMessage(1, "Province");
+        }
+         
+        if(this.isNullOrEmpty(model.getCity())){
+            return this.validateMessage(1, "City");
+        }
+        
+        if(this.isNullOrEmpty(model.getDistrict())){
+            return this.validateMessage(1, "District");
+        }
+        
+        if(this.isNullOrEmpty(model.getSub_district())){
+            return this.validateMessage(1, "Sub District");
+        }
+        
+        if(this.isNullOrEmpty(model.getZip_code())){
+            return this.validateMessage(1, "Zip Code");
+        }
+        
+        if(this.isNullOrEmpty(model.getAddress_1())){
+            return this.validateMessage(1, "Address 1");
+        }
+        return res;
+    }
+    
+    public String validateMessage(int seq,String text){
+        if(seq == 1){
+            return "Field "+text+" Wajib Diisi";
+        }else{
+            return text;
+        }
+    }
+    
+    public boolean isNullOrEmpty(String text){
+        if(text.equals("") || text == null){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
